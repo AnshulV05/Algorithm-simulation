@@ -1,4 +1,4 @@
-package Diffiehelmann;
+package Diffie-Helmann;
 import java.net.*;
 import java.util.Scanner;
 
