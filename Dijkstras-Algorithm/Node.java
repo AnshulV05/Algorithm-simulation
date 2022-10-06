@@ -1,4 +1,4 @@
-package Dijkstra's_Algorithm;
+package Dijkstras_Algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
