@@ -85,7 +85,7 @@ bool miller_rabin(long long int n, int x)
     return answer;
 }
 
-//Used to generate a prime number between x and y.
+// Used to generate a prime number between x and y.
 long long int gen_prime(long long int x, long long int y)
 {
     for (long long int i = x; i < y; i++)
@@ -95,21 +95,53 @@ long long int gen_prime(long long int x, long long int y)
             return i;
         }
     }
+    return -1; // When there is no prime number between the two
 }
 int main()
 {
-    // long long int  n;
-    // cin>>n;
-    srand(time(0));
-    int count = 0;
-    for (int i = 3; i < 10000; i = i + 2)
+    int n;
+    int choice;
+    cout << "Choose any option"
+         << "\n"
+         << "1) List primes under a specified number"
+         << "\n"
+         << "2) Generate a prime between two numbers" << endl;
+    cin >> choice;
+    if (choice == 1)
     {
-        // long long int  a = 2+rand()%(i-2);
-        if (miller_rabin(i, 5))
+        cout<<"Enter the maximum range"<<endl;
+        cin >> n;
+        srand(time(0));
+        int count = 0;
+        for (int i = 3; i < n; i = i + 2)
         {
-            count++;
-            cout << i << endl;
+            if (miller_rabin(i, 5))
+            {
+                count++;
+                cout << i << endl;
+            }
+        }
+        // Finally it prints the total count of primes.
+        cout << "The Total prime numbers are " << endl;
+        cout << (count + 1) << endl;
+    }
+    else if (choice == 2)
+    {
+        long long int a,b;
+        cout<<"Provide first number  : ";
+        cin>>a;
+        cout<<"Provide second number : ";
+        cin>>b;
+        long long int p = gen_prime(a,b);
+        if(p==-1){
+            cout<<"There is no prime in between"<<endl;
+        }
+        else{
+            cout<<"Prime number is "<<p<<endl;
         }
     }
-    cout << (count + 1) << endl;
+    else
+    {
+        cout << "Wrong choice exiting the program" << endl;
+    }
 }
